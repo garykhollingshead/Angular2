@@ -1,0 +1,28 @@
+.row {
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.row::before,
+.row::after {
+    content: '';
+    display: table;
+}
+
+.details-row {
+    float:none;
+    h5 {
+        margin-top: 1.75rem;
+    }
+    p {
+        margin-top: 1.25rem;
+    }
+}
+
+.actionBtn-row {
+    float: left;
+    .md-button {
+        margin: 6px 0;
+    }
+}

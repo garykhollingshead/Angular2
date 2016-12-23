@@ -1,0 +1,27 @@
+$font-stack: 'Gotham', Arial, Open-Sans, sans-serif;
+
+$border-radius: 3px;
+
+// INCOMM BRAND COLORS //
+$red: rgb(166, 0, 3);               // #a60003
+$black: rgb(0, 0, 0);               // #000000
+$slate: rgb(93, 126, 149);          // #5d7e95
+$yellow: rgb(247, 179, 52);         // #f7b334
+$black_90: lighten($black, 90%);    // #2b2b2b
+$black_65: lighten($black, 65%);    // #4d4e4e
+
+// OTHER COLORS //
+$white: rgb(255, 255, 255);         // #ffffff
+$blue: rgb(71, 161, 245);           // #47a1f5
+$mint: rgb(113, 226, 203);          // #71e2cb
+$green: rgb(130, 205, 89);          // #82cd59
+$gray: rgb(198, 198, 198);          // #c6c6c6
+$light_gray: rgb(223, 223, 223);    // #dfdfdf
+$medium_gray: rgb(151, 151, 151);   // #979797
+$dark_gray: rgb(85, 85, 85);        // #555555
+
+// WARNING/NOTIFICATION COLORS //
+$success: rgb(161, 222, 128);       // #a1de80
+$fail: rgb(231, 76, 76);            // #e74c4c
+$warning: rgb(247, 226, 110);       // #f7e26e
+$pending: rgb(146, 206, 248);       // #92cef8

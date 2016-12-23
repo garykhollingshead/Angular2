@@ -1,0 +1,37 @@
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+}
+.navbar-default {
+    background-color: $dark_gray;
+    border-color: inherit;
+    .navbar-nav {
+        float:right;
+        li {
+            a {
+                color: $white;
+                text-transform: uppercase;
+                &:hover {
+                    color: $yellow;
+                }
+            }
+        }
+    }
+    .navbar-brand {
+        color: $white;
+        font-size: 1.5rem;
+        font-weight: 100;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 15px 0;
+        &:hover {
+            color: $yellow;
+        }
+    }
+}
+
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-nav > li > a:focus {
+    color: $white;
+    background-color: transparent;
+}

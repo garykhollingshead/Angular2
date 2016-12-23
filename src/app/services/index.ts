@@ -1,2 +1,1 @@
-export * from "./title/title.service";
-export * from "./app.service/app.service"
+export * from "./brandApi/brandApi.service";

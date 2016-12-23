@@ -42,12 +42,20 @@ module.exports = function (options) {
           use: ['to-string-loader', 'css-loader']
         },
         {
+          test: /\.scss$/,
+          use: ["raw-loader", "sass-loader"]
+        },
+        {
           test: /\.html$/,
           use: 'raw-loader',
           exclude: [helpers.root('src/index.html')]
         },
         {
           test: /\.(jpg|png|gif)$/,
+          use: 'file-loader'
+        },
+        {
+          test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
           use: 'file-loader'
         }
       ]
@@ -59,7 +67,8 @@ module.exports = function (options) {
        */
       new ForkCheckerPlugin(),
       new CopyWebpackPlugin([
-        {from: 'src/assets', to: 'assets'},
+        {from: 'src/assets/icon', to: 'assets/icon'},
+        {from: 'src/assets/img', to: 'assets/img'},
         {from: 'src/index.html', to: './'}
       ]),
       new webpack.ContextReplacementPlugin(

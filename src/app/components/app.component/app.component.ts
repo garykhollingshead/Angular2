@@ -1,24 +1,16 @@
-import {Component} from "@angular/core";
-
-import {AppState} from "../../services/app.service/app.service";
+import {Component, ViewEncapsulation} from "@angular/core";
 
 @Component({
   selector: "app",
-  styleUrls: [
-    "app.component.css"
+  encapsulation: ViewEncapsulation.None,
+  styles: [
+    require("../../../assets/styles/main.scss")
   ],
-  templateUrl: "app.component.html"
+  template: require("./app.component.html")
 
 })
 export class AppComponent {
-  name: string = "Angular 2";
 
-  constructor(public appState: AppState) {
-
-  }
-
-  ngOnInit() {
-    console.log("Initial App State", this.appState.state);
-  }
+  constructor() {}
 
 }

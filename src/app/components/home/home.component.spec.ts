@@ -1,19 +1,6 @@
-import {
-  inject,
-  TestBed
-} from "@angular/core/testing";
-
-import {
-  BaseRequestOptions,
-  ConnectionBackend,
-  Http
-} from "@angular/http";
+import { inject, TestBed } from "@angular/core/testing";
+import { BaseRequestOptions, ConnectionBackend, Http } from "@angular/http";
 import { MockBackend } from "@angular/http/testing";
-
-import {
-  AppState,
-  Title
-} from "../../services/index";
 
 import { HomeComponent } from "./home.component";
 
@@ -29,18 +16,8 @@ describe("Home", () => {
         },
         deps: [MockBackend, BaseRequestOptions]
       },
-      AppState,
-      Title,
       HomeComponent
     ]
-  }));
-
-  it("should have default data", inject([ HomeComponent ], (home: HomeComponent) => {
-    expect(home.localState).toEqual({ value: "" });
-  }));
-
-  it("should have a title", inject([ HomeComponent ], (home: HomeComponent) => {
-    expect(!!home.title).toEqual(true);
   }));
 
   it("should log ngOnInit", inject([ HomeComponent ], (home: HomeComponent) => {

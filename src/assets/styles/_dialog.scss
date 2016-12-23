@@ -1,0 +1,192 @@
+md-dialog {
+    min-width: 280px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 500px;
+    .notification {
+        padding: .75rem;
+        color: $white;
+        font-size: 1.25rem;
+        &.warning {
+            background-color: $fail;
+            .ghost-btn {
+                background-color: lighten($fail, 10%) !important;
+                color: $white;
+                font-size: 1.25rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                margin: 0;
+                min-width: 0 !important;
+                span {
+                    margin-left: 0;
+                    margin-top: 0;
+                }
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: lighten($fail, 20%) !important;
+                }
+            }
+            .material-icons {
+                display: inline-block;
+                float: left;
+                margin: .5rem 1rem 0 .5rem;
+            }
+            span {
+                display: block;
+                line-height: 1.3;
+                margin-left: 4rem;
+                margin-top: 1rem;
+            }
+        }
+    }
+    input-container {
+        width: 100%;
+        label {
+            display: block;
+            float: left;
+            width: auto;
+            margin-right: 0;
+            text-align: left;
+            margin-top: 1.5rem;
+            margin-bottom: 0;
+        }
+        input,
+        select,
+        textarea {
+            float: left;
+            display: block;
+            border: 1px solid $gray;
+            border-radius: 2px;
+            height: 34px;
+            width: 100%;
+            margin: .35rem 0 0;
+            padding: 0 .5rem 0 1rem;
+            outline: none;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        input[disabled] {
+            color: $medium_gray;
+        }
+
+        textarea {
+            resize: vertical;
+            border-color: $gray;
+        }
+        .ng-touched {
+            &.ng-invalid-required,
+            &.ng-invalid,
+            &.ng-invalid.ng-dirty,
+            &:invalid {
+                border-color: $red;
+            }
+            &.ng-valid-min,
+            &.ng-valid-max {
+                border-color: $gray;
+            }
+        }
+        .ng-invalid.ng-dirty {
+            border-color: $red;
+        }
+        .ng-untouched.ng-invalid {
+            border-color: $gray;
+        }
+        .ng-submitted input.ng-invalid {
+            border-color: $red;
+        }
+    }
+
+    md-checkbox {
+        &.md-checked {
+            .md-ink-ripple,
+            .md-icon {
+                background-color: $yellow;
+                color: $yellow;
+            }
+        }
+        .md-container:before {
+            background-color: $white;
+        }
+    }
+
+    .md-tab {
+        padding: 12px 15px;
+    }
+
+    md-content {
+        background-color: $light_gray;
+    }
+
+    .panelBtn {
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 2rem;
+        color: $dark_gray;
+        text-align: center;
+        .material-icons {
+            color: $yellow;
+            display: block;
+            font-size: 4rem;
+            margin-top: 1.25rem;
+        }
+    }
+}
+
+
+@media screen and (min-width: 640px) {
+    md-dialog {
+        width: 575px;
+        input-container {
+            width: auto;
+        }
+        md-content {
+            background-color: $light_gray;
+        }
+        input-container {
+            display: inline-block;
+            label {
+                display: inline-block;
+                float: left;
+                font-size: 1.25rem;
+                width: 15rem;
+                margin-right: 11px;
+                text-align: right;
+                margin-top: 1.15rem;
+            }
+            input,
+            select,
+            .checkbox-row,
+            .switch-row,
+            textarea {
+                float: right;
+                display: block;
+                width: 290px;
+                margin-top: 0;
+                margin-bottom: .5rem;
+            }
+            md-switch {
+                margin: 7px 0;
+                .md-container {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .md-dialog-container {
+        md-dialog {
+            width: 550px;
+        }
+    }
+    
+    md-dialog {
+        max-width: 550px;
+    }
+}

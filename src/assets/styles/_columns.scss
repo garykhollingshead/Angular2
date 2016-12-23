@@ -1,0 +1,27 @@
+.col-list-container {
+    border-top: 1px solid $gray;
+    padding-top: 1rem;
+    margin-top: 2rem;
+
+    .col-list,
+    .col-list-2 {
+       -moz-column-count: 1;
+        -moz-column-gap: 0;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 0;
+        column-count: 1;
+        column-gap: 0;
+        ul {
+            list-style: none;
+            margin-left: -38px;
+            font-size: 1.25rem;
+            line-height: 2;
+            li {
+                a {
+                    cursor: pointer;
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+}

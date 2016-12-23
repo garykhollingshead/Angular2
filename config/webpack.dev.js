@@ -7,18 +7,35 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
+const appConfig = {
+  "ApiHost": JSON.stringify("http://localhost"),
+  "IndigoUiAssets": JSON.stringify("http://localhost:3000/static/js"),
+  "CatalogApiRoot": JSON.stringify("/catalogs/api"),
+  "ProgramApiRoot": JSON.stringify("/programs/api"),
+  "TemplateApiRoot": JSON.stringify("/EmailTemplateApi")
+};
+
+const METADATA = webpackMerge(commonConfig({
+  env: ENV,
+  appConfig: appConfig
+}).metadata, {
   host: HOST,
   port: PORT,
-  ENV: ENV
+  ENV: ENV,
+  appConfig: appConfig
 });
 
 module.exports = function () {
-  return webpackMerge(commonConfig({env: ENV}), {
+  return webpackMerge(commonConfig({env: ENV, appConfig: appConfig}), {
     devtool: 'cheap-module-source-map',
 
     plugins: [
       new DefinePlugin({
+        "ApiHost": METADATA.appConfig.ApiHost,
+        "IndigoUiAssets": METADATA.appConfig.IndigoUiAssets,
+        "CatalogApiRoot": METADATA.appConfig.CatalogApiRoot,
+        "ProgramApiRoot": METADATA.appConfig.ProgramApiRoot,
+        "TemplateApiRoot": METADATA.appConfig.TemplateApiRoot,
         'ENV': JSON.stringify(METADATA.ENV),
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),

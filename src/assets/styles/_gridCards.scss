@@ -1,0 +1,74 @@
+md-card {
+    margin-left: 0;
+}
+
+md-card-header-text {
+    padding: 1rem;
+    .md-title {
+        word-break: break-all;
+        font-size: 1.25rem;
+        font-weight: 600;
+        display: block;
+    }
+    .md-subhead {
+        word-break: break-all;
+        display: block;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+}
+
+.card-callout {
+    background-color: $mint;
+    color: $white;
+    text-align: center;
+    padding: 1rem;
+    .amount {
+        display: block;
+        font-size: 3rem;
+        font-weight: 100;
+    }
+    .productType {
+        display: block;
+        text-transform: uppercase;
+    }
+}
+
+.selected-card {
+    border: 1px solid $black;
+}
+
+md-card {
+    md-card-content {
+        padding: 10px 6px;
+    }
+}
+
+md-card-content {
+    .label {
+        word-break: break-all;
+        display: block;
+        font-size: 1.25rem;
+        font-weight: normal;
+        line-height: 1.1;
+        white-space: normal;
+        padding: .15rem .25rem;
+        &.title {
+            color: $black_65;
+            text-align: left;
+        }
+        &.property {
+            color: $dark_gray;
+            text-align: left;
+            padding-bottom: 1rem;
+        }
+    }
+}
+
+.gridListBasicUsage md-grid-list {
+    margin: 8px;
+}
+
+.gridListBasicUsage md-grid-tile {
+    transition: all 400ms ease-out 50ms;
+}
