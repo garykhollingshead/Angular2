@@ -68,6 +68,7 @@ module.exports = function (options) {
       new ForkCheckerPlugin(),
       new CopyWebpackPlugin([
         {from: 'src/assets/icon', to: 'assets/icon'},
+        {from: 'src/assets/fonts', to: 'assets/fonts'},
         {from: 'src/assets/img', to: 'assets/img'},
         {from: 'src/index.html', to: './'}
       ]),

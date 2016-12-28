@@ -4,12 +4,14 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule, PreloadAllModules} from "@angular/router";
 import "hammerjs";
+import { NotificationBarModule } from "angular2-notification-bar";
 
 import {ENV_PROVIDERS} from "./environment";
 import {ROUTES} from "./app.routes";
 
 import {APP_RESOLVER_PROVIDERS} from "./app.resolver";
 import {BrandApi} from "./services/index";
+
 import {
   HomeComponent,
   BrandListComponent,
@@ -46,7 +48,8 @@ const APP_PROVIDERS = [
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules})
+    RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
+    NotificationBarModule
   ],
   providers: [ // expose our Services and Providers into Angular"s dependency injection
     ENV_PROVIDERS,
