@@ -9,10 +9,22 @@ const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
+const appConfig = {
+  "ApiHost": JSON.stringify("http://localhost"),
+  "IndigoUiAssets": JSON.stringify("http://localhost/testt/static/js"),
+  "CatalogApiRoot": JSON.stringify("/catalogs/api"),
+  "ProgramApiRoot": JSON.stringify("/programs/api"),
+  "TemplateApiRoot": JSON.stringify("/EmailTemplateApi")
+};
+
+const METADATA = webpackMerge(commonConfig({
+  env: ENV,
+  appConfig: appConfig
+}).metadata, {
   host: HOST,
   port: PORT,
-  ENV: ENV
+  ENV: ENV,
+  appConfig: appConfig
 });
 
 module.exports = function () {
@@ -20,6 +32,11 @@ module.exports = function () {
     devtool: 'source-map',
     plugins: [
       new DefinePlugin({
+        "ApiHost": METADATA.appConfig.ApiHost,
+        "IndigoUiAssets": METADATA.appConfig.IndigoUiAssets,
+        "CatalogApiRoot": METADATA.appConfig.CatalogApiRoot,
+        "ProgramApiRoot": METADATA.appConfig.ProgramApiRoot,
+        "TemplateApiRoot": METADATA.appConfig.TemplateApiRoot,
         'ENV': JSON.stringify(METADATA.ENV),
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
