@@ -6,11 +6,7 @@ import {Component, ViewEncapsulation} from "@angular/core";
   styles: [
     require("../../../assets/styles/main.scss")
   ],
-  template: require("./app.component.html")
+  template: require("./app.html")
 
 })
-export class AppComponent {
-
-  constructor() {}
-
-}
+export class AppComponent {}

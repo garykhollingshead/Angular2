@@ -18,7 +18,8 @@ import {
   ProductListComponent,
   AppComponent,
   NoContentComponent,
-  NavigationComponent
+  NavigationComponent,
+  LoadingWheelComponent
 } from "./components/index";
 
 import {XLarge} from "./directives/index";
@@ -46,6 +47,7 @@ const APP_PROVIDERS = [
     HomeComponent,
     NoContentComponent,
     NavigationComponent,
+    LoadingWheelComponent,
     XLarge
   ],
   imports: [ // import Angular"s modules
