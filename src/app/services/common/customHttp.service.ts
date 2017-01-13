@@ -26,13 +26,14 @@ export class CustomHttp extends Http {
     return super.request(apiProxyUrl, options);
   }
 
-  private getUrlParts(url: string): any {
-    let apiBasePaths = [CatalogApiRoot, ProgramApiRoot, TemplateApiRoot];
-    let indexOfApi = url.indexOf(apiBasePaths.find(path => url.indexOf(path) !== -1));
+  private getUrlParts(urlPath: string): any {
+    let url = new URL(urlPath);
+    let apiBasePaths = [CatalogApiUrl, ProgramApiUrl, TemplateApiRoot];
+    let indexOfApi = urlPath.indexOf(apiBasePaths.find(path => urlPath.indexOf(path) !== -1));
 
     return {
-      host: url.substring(0, indexOfApi),
-      urlPath: url.substring(indexOfApi),
+      host: url.host,
+      urlPath: url.pathname,
       isAPIRequest: indexOfApi !== -1
     };
   }

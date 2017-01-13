@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
-import {HttpModule, RequestOptions, XHRBackend, Http} from "@angular/http";
+import {HttpModule} from "@angular/http";
 import {RouterModule, PreloadAllModules} from "@angular/router";
 import "hammerjs";
 import {NotificationBarModule} from "angular2-notification-bar";
@@ -9,31 +9,33 @@ import {NotificationBarModule} from "angular2-notification-bar";
 import {ENV_PROVIDERS} from "./environment";
 import {ROUTES} from "./app.routes";
 
-import {BrandApi} from "./services/index";
+import {} from "./services/index";
 
-import {
-  HomeComponent,
-  BrandListComponent,
-  CustomerListComponent,
-  ProductListComponent,
-  AppComponent,
-  NoContentComponent,
-  NavigationComponent,
-  LoadingWheelComponent
-} from "./components/index";
+import {  AppComponent } from "./components/index";
 
 import {XLarge} from "./directives/index";
 import {MaterialModule} from "@angular/material";
-import {CustomHttp} from "./services/common/customHttp.service";
+import {ProtectedDirective} from "./directives/protected/protected.directive";
+import {BrandApiService} from "./services/brands/brandApi.service";
+import {LoginService} from "./services/login/login.service";
+import {BrandListComponent} from "./components/brandList/brandList.component";
+import {CustomerListComponent} from "./components/customerList/customerList.component";
+import {HomeComponent} from "./components/home/home.component";
+import {LoadingWheelComponent} from "./components/loading/loading.component";
+import {NavigationComponent} from "./components/navigation/navigation.component";
+import {NoContentComponent} from "./components/no-content/no-content.component";
+import {ProductListComponent} from "./components/productList/productList.component";
+import {SignInComponent} from "./components/signIn/signIn.component";
+// import {CustomHttp} from "./services/common/customHttp.service";
 
-// Application wide providers
 const APP_PROVIDERS = [
-    BrandApi,
-    {
-      provide: Http,
-      useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => new CustomHttp(backend, defaultOptions),
-      deps: [XHRBackend, RequestOptions]
-    }
+    BrandApiService,
+  LoginService,
+    // {
+    //   provide: Http,
+    //   useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => new CustomHttp(backend, defaultOptions),
+    //   deps: [XHRBackend, RequestOptions]
+    // }
   ]
   ;
 
@@ -41,16 +43,18 @@ const APP_PROVIDERS = [
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
+    ProtectedDirective,
     BrandListComponent,
     CustomerListComponent,
-    ProductListComponent,
     HomeComponent,
-    NoContentComponent,
-    NavigationComponent,
     LoadingWheelComponent,
+    NavigationComponent,
+    NoContentComponent,
+    ProductListComponent,
+    SignInComponent,
     XLarge
   ],
-  imports: [ // import Angular"s modules
+  imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -58,14 +62,10 @@ const APP_PROVIDERS = [
     RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
     NotificationBarModule
   ],
-  providers: [ // expose our Services and Providers into Angular"s dependency injection
+  providers: [
     ENV_PROVIDERS,
     APP_PROVIDERS
   ]
 })
-export class AppModule {
-  constructor() {
-  }
-
-}
+export class AppModule {}
 

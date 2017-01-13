@@ -61,11 +61,6 @@ module.exports = function (options) {
       ]
     },
     plugins: [
-      /*
-       * Plugin: ForkCheckerPlugin
-       * Description: Do type checking in a separate process, so webpack don't need to wait.
-       */
-      new ForkCheckerPlugin(),
       new CopyWebpackPlugin([
         {from: 'src/assets/icon', to: 'assets/icon'},
         {from: 'src/assets/fonts', to: 'assets/fonts'},

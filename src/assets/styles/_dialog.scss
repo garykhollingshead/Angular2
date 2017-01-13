@@ -41,7 +41,7 @@ md-dialog {
             }
         }
     }
-    input-container {
+    md-input-container {
         width: 100%;
         label {
             display: block;
@@ -140,13 +140,13 @@ md-dialog {
 @media screen and (min-width: 640px) {
     md-dialog {
         width: 575px;
-        input-container {
+        md-input-container {
             width: auto;
         }
         md-content {
             background-color: $light_gray;
         }
-        input-container {
+        md-input-container {
             display: inline-block;
             label {
                 display: inline-block;
@@ -185,7 +185,7 @@ md-dialog {
             width: 550px;
         }
     }
-    
+
     md-dialog {
         max-width: 550px;
     }

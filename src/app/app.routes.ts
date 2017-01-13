@@ -4,7 +4,8 @@ import {
   BrandListComponent,
   ProductListComponent,
   CustomerListComponent,
-  NoContentComponent
+  NoContentComponent,
+  SignInComponent
 } from "./components/index";
 
 export const ROUTES: Routes = [
@@ -13,5 +14,6 @@ export const ROUTES: Routes = [
   {path: "brands", component: BrandListComponent},
   {path: "products", component: ProductListComponent},
   {path: "customers", component: CustomerListComponent},
+  {path: "signin", component: SignInComponent},
   {path: "**", component: NoContentComponent}
 ];

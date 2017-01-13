@@ -10,10 +10,10 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
 const appConfig = {
-  "ApiHost": JSON.stringify("http://localhost"),
   "IndigoUiAssets": JSON.stringify("http://localhost/testt/static/js"),
-  "CatalogApiRoot": JSON.stringify("/catalogs/api"),
-  "ProgramApiRoot": JSON.stringify("/programs/api"),
+  "CatalogApiUrl": JSON.stringify("http://localhost/catalogs/api"),
+  "ProgramApiUrl": JSON.stringify("http://localhost/programs/api"),
+  "AuthServerUrl": JSON.stringify("http://localhost/auth"),
   "TemplateApiRoot": JSON.stringify("/EmailTemplateApi")
 };
 
@@ -32,10 +32,10 @@ module.exports = function () {
     devtool: 'source-map',
     plugins: [
       new DefinePlugin({
-        "ApiHost": METADATA.appConfig.ApiHost,
         "IndigoUiAssets": METADATA.appConfig.IndigoUiAssets,
-        "CatalogApiRoot": METADATA.appConfig.CatalogApiRoot,
-        "ProgramApiRoot": METADATA.appConfig.ProgramApiRoot,
+        "CatalogApiUrl": METADATA.appConfig.CatalogApiUrl,
+        "ProgramApiUrl": METADATA.appConfig.ProgramApiUrl,
+        "AuthServerUrl": METADATA.appConfig.AuthServerUrl,
         "TemplateApiRoot": METADATA.appConfig.TemplateApiRoot,
         'ENV': JSON.stringify(METADATA.ENV),
         'process.env': {
