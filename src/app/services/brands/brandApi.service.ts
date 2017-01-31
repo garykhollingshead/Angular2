@@ -15,7 +15,8 @@ export class BrandApiService {
 
   getBrands(searchText: string): Observable<Brand[]> {
     searchText = searchText || "";
-    let options: RequestOptionsArgs = {headers: new Headers({"Authorization": `Bearer ${this.loginService.accessToken()}`})};
+    let headers = this.getHeaders();
+    let options: RequestOptionsArgs = {headers: headers};
 
     return this.http.get(`${CatalogApiUrl}/brands?searchText=${searchText}`, options)
       .map((response: Response) => response.json())
@@ -28,4 +29,10 @@ export class BrandApiService {
       });
   };
 
+  private getHeaders(): Headers{
+    return new Headers({
+      "Authorization": `Bearer ${this.loginService.accessToken()}`,
+      "withCredentials": true
+    });
+  }
 }
