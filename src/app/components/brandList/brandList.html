@@ -66,6 +66,7 @@
           </tbody>
         </table>
       </md-card>
+      <pager [headers]="header" (onUpdateList)="updateBrandsListsFromPaging($event)"></pager>
     </div>
   </div>
 </div>

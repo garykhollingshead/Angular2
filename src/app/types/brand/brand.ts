@@ -1,3 +1,5 @@
+import {Headers} from "@angular/http";
+
 export interface Brand {
   id?: number;
   name: string;
@@ -7,4 +9,9 @@ export interface Brand {
   incommBrandIdentifier: string;
   imageUrl: string;
   parentBrand: any;
+}
+
+export interface BrandWithHeaders {
+  data: Brand[];
+  headers: Headers;
 }

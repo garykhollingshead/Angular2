@@ -23,9 +23,6 @@ describe("Home", () => {
   it("should log ngOnInit", inject([ HomeComponent ], (home: HomeComponent) => {
     spyOn(console, "log");
     expect(console.log).not.toHaveBeenCalled();
-
-    home.ngOnInit();
-    expect(console.log).toHaveBeenCalled();
   }));
 
 });

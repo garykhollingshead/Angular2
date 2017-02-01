@@ -16,20 +16,21 @@ import {  AppComponent } from "./components/index";
 import {XLarge} from "./directives/index";
 import {MaterialModule} from "@angular/material";
 import {ProtectedDirective} from "./directives/protected/protected.directive";
-import {BrandApiService} from "./services/brands/brandApi.service";
-import {LoginService} from "./services/login/login.service";
-import {BrandListComponent} from "./components/brandList/brandList.component";
-import {CustomerListComponent} from "./components/customerList/customerList.component";
-import {HomeComponent} from "./components/home/home.component";
-import {LoadingWheelComponent} from "./components/loading/loading.component";
-import {NavigationComponent} from "./components/navigation/navigation.component";
-import {NoContentComponent} from "./components/no-content/no-content.component";
-import {ProductListComponent} from "./components/productList/productList.component";
-import {SignInComponent} from "./components/signIn/signIn.component";
-// import {CustomHttp} from "./services/common/customHttp.service";
+import {BrandApiService, HttpService, LoginService} from "./services/index";
+import {BrandListComponent,
+  CustomerListComponent,
+  HomeComponent,
+  LoadingWheelComponent,
+  NavigationComponent,
+  NoContentComponent,
+  ProductListComponent,
+  SignInComponent,
+  PagingButtonsComponent,
+  PagerComponent } from "./components/index";
 
 const APP_PROVIDERS = [
-    BrandApiService,
+  BrandApiService,
+  HttpService,
   LoginService,
     // {
     //   provide: Http,
@@ -52,6 +53,8 @@ const APP_PROVIDERS = [
     NoContentComponent,
     ProductListComponent,
     SignInComponent,
+    PagingButtonsComponent,
+    PagerComponent,
     XLarge
   ],
   imports: [

@@ -1,38 +1,19 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, RequestOptionsArgs, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
-import {NotificationBarService, NotificationType} from "angular2-notification-bar";
 
-import {Brand} from "../../types/index";
-import {LoginService} from "../login/login.service";
+import {Brand, BrandWithHeaders} from "../../types/index";
+import {HttpService} from "../common/http.service";
 
 @Injectable()
 export class BrandApiService {
 
-  constructor(public http: Http, private notificationService: NotificationBarService,
-              private loginService: LoginService) {
-  }
+  constructor(public http: HttpService) { }
 
   getBrands(searchText: string): Observable<Brand[]> {
-    searchText = searchText || "";
-    let headers = this.getHeaders();
-    let options: RequestOptionsArgs = {headers: headers};
-
-    return this.http.get(`${CatalogApiUrl}/brands?searchText=${searchText}`, options)
-      .map((response: Response) => response.json())
-      .catch(error => {
-        this.notificationService.create({
-          message: error || 'Server error',
-          type: NotificationType.Error
-        });
-        return Observable.throw(error || 'Server error');
-      });
+    return this.http.httpGet(`${CatalogApiUrl}/brands?searchText=${searchText || ""}`);
   };
 
-  private getHeaders(): Headers{
-    return new Headers({
-      "Authorization": `Bearer ${this.loginService.accessToken()}`,
-      "withCredentials": true
-    });
+  getBrandsWithHeaders(searchText: string): Observable<BrandWithHeaders> {
+    return this.http.httpGetWithHeaders(`${CatalogApiUrl}/brands?pageSize=5&searchText=${searchText || ""}`);
   }
 }

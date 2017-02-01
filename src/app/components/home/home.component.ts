@@ -4,11 +4,4 @@ import {Component} from "@angular/core";
   selector: "home",
   templateUrl: "home.html"
 })
-export class HomeComponent {
-
-  constructor() { }
-
-  ngOnInit() {
-    console.log("hello `Home` component");
-  }
-}
+export class HomeComponent {}
