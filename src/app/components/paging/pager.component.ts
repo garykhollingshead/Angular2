@@ -4,7 +4,7 @@ import {Headers} from "@angular/http";
 
 @Component({
   selector: "pager",
-  templateUrl: `
+  template: `
 <paging-buttons [buttonConfig]="buttonConfiguration" (onButtonClicked)="buttonClicked($event)"> 
 </paging-buttons>`
 })
@@ -13,7 +13,7 @@ export class PagerComponent implements OnChanges {
   @Output() onUpdateList = new EventEmitter<any>();
 
   private relations: any = {};
-  private buttonConfiguration: any = this.defaultButtonConfiguration();
+  public buttonConfiguration: any = this.defaultButtonConfiguration();
 
   constructor(private httpService: HttpService) { }
 

@@ -13,44 +13,15 @@
 
 <div class="pg-body">
   <div class="container-1170">
-    <!--<div class="row">
-      <div class="details-row">
-        <h5>PARENT BRANDS</h5>
-      </div>
-      <div class="actionBtn-row">
-        <md-button class="primaryBtn md-raised" ng-click="vm.addParentBrand()">Add New Parent Brand</md-button>
-      </div>
-    </div>
-    <div class="search-results">
-      <md-card layout-padding>
-        <table>
-          <thead>
-          <tr>
-            <th>Parent Brand ID</th>
-            <th class="column-sort" ng-click="vm.sortBy('parentBrand.name')">Parent Brand Name</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="parentBrand in vm.parentBrands | orderBy:vm.sort.predicate:vm.sort.reverse">
-            <td data-label="Parent Brand ID">{{parentBrand.id}}</td>
-            <td data-label="Name"><a ui-sref="parentBrand({parentBrandId: parentBrand.id})">{{parentBrand.name}}</a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </md-card>
-    </div>-->
-
-    <div class="row">
+     <div class="row">
       <div class="details-row">
         <h5>BRANDS</h5>
       </div>
       <div class="actionBtn-row">
-        <button md-raised-button class="primaryBtn" >Add New Brand</button>
+        <button class="primaryBtn" >Add New Brand</button>
       </div>
     </div>
     <div class="search-results">
-      <md-card layout-padding>
         <table>
           <thead>
           <tr>
@@ -65,7 +36,6 @@
           </tr>
           </tbody>
         </table>
-      </md-card>
       <pager [headers]="header" (onUpdateList)="updateBrandsListsFromPaging($event)"></pager>
     </div>
   </div>

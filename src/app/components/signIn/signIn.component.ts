@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component} from "@angular/core";
 import {LoginService} from "../../services/login/login.service";
 
 @Component({
@@ -6,16 +6,16 @@ import {LoginService} from "../../services/login/login.service";
   template: `
 <form #signinForm="ngForm" novalidate>
   <div layout="row" layout-align="center center">
-    <md-input-container>
+    <div>
       <label>Login Name:</label>
-      <input md-input type="text" name="clientId" [(ngModel)]="clientId" >
-    </md-input-container>
+      <input type="text" name="clientId" [(ngModel)]="clientId" >
+    </div>
   </div>
   <div layout="row" layout-align="center center">
-    <md-input-container>
+    <div>
       <label>Password:</label>
-      <input md-input type="password" name="clientSecret" [(ngModel)]="clientSecret" >
-    </md-input-container>
+      <input type="password" name="clientSecret" [(ngModel)]="clientSecret" >
+    </div>
   </div>
   <div layout="row" layout-align="center center">
     <button (click)="login()" [disabled]="signinForm.invalid">Log In</button>
@@ -23,14 +23,11 @@ import {LoginService} from "../../services/login/login.service";
 </form>
 `
 })
-export class SignInComponent implements OnInit{
+export class SignInComponent{
   public clientId: string = "TestMcClientApp";
   public clientSecret: string = "TestMcClientApp_Secret";
 
   constructor(private loginService: LoginService) {}
-
-  ngOnInit(): void {
-  }
 
   public login(): void {
     this.loginService.getNewToken(this.clientId, this.clientSecret);

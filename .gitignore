@@ -43,6 +43,7 @@ npm-debug.log
 
 # Dist #
 /dist
+/build
 /public/__build__/
 /src/*/__build__/
 /__build__/**
@@ -62,3 +63,6 @@ npm-debug.log
 
 /src/**/*.js
 /src/**/*.js.map
+/src/**/*ngstyle.ts
+/src/**/*ngsummary.json
+/src/**/*ngfactory.ts
