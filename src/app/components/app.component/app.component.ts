@@ -1,4 +1,5 @@
 import {Component, ViewEncapsulation} from "@angular/core";
+import "../../../assets/styles/main.scss";
 
 @Component({
   selector: "app",
@@ -7,7 +8,6 @@ import {Component, ViewEncapsulation} from "@angular/core";
     "../../../assets/styles/main.scss"
   ],
   template: `
-<notification-bar></notification-bar>
 <navigation></navigation>
 
 <main>

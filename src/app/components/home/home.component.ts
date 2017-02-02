@@ -6,7 +6,7 @@ import {Component} from "@angular/core";
 <div class="pg-header">
   <div class="container-1170">
     <div layout="column" layout-align="center center" class="splash">
-      <img src="assets/img/RADMIN_logo.png">
+      <img src="rad2/assets/img/RADMIN_logo.png">
       <h5>&#34;WE PUT THE RAD IN RADMIN&#34;</h5>
       <p>
         <i class="material-icons">pets</i>

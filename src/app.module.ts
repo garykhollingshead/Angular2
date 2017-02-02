@@ -3,10 +3,9 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule, PreloadAllModules, Routes} from "@angular/router";
-import {NotificationBarModule} from "angular2-notification-bar";
 
-import {ProtectedDirective} from "./directives/protected/protected.directive";
-import {BrandApiService, HttpService, LoginService} from "./services/index";
+import {ProtectedDirective} from "./app/directives/protected/protected.directive";
+import {BrandApiService, HttpService, LoginService} from "./app/services/index";
 import {
   AppComponent,
   BrandListComponent,
@@ -18,7 +17,7 @@ import {
   ProductListComponent,
   SignInComponent,
   PagingButtonsComponent,
-  PagerComponent } from "./components/index";
+  PagerComponent } from "./app/components/index";
 
 const APP_PROVIDERS = [
   BrandApiService,
@@ -55,8 +54,7 @@ const ROUTES: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
-    NotificationBarModule
+    RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules})
   ],
   providers: [
     APP_PROVIDERS

@@ -1,30 +1,19 @@
 var webpack = require('webpack');
 var path = require("path");
 var ngToolsWebpack = require("@ngtools/webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
-const appEnvironment = process.env.APP_ENVIRONMENT || "development";
-var isProduction = appEnvironment === "production";
-
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3000;
 const appConfig = {
   "CatalogApiUrl": JSON.stringify("https://localhost/catalogs/api"),
   "ProgramApiUrl": JSON.stringify("https://localhost/programs/api"),
   "AuthServerUrl": JSON.stringify("https://localhost/auth")
 };
-const METADATA = {
-  host: HOST,
-  port: PORT,
-  ENV: appEnvironment,
-  appConfig: appConfig
-};
 
 var webpackConfig = {
   entry: {
-    'polyfill': './src/polyfills.ts',
     'app': './src/main.aot.ts'
   },
   output: {
@@ -43,41 +32,25 @@ var webpackConfig = {
       { test: /\.(jpg|jpeg|gif|png)$/, loader:'file-loader?name=img/[path][name].[ext]' },
       { test: /\.(eof|woff|woff2|svg)$/, loader:'file-loader?name=img/[path][name].[ext]' },
       {
-        test: /\.css$/,
-        include: path.resolve(process.cwd(), "src", "app"),
-        loaders: ["to-string-loader", "css-loader"]
-      },
-      {
         test: /\.scss$/,
-        use: ["raw-loader", "sass-loader"]
+        loaders: ["raw-loader", "sass-loader"]
       },
-      {
-        test: /\.css$/,
-        exclude: path.resolve(process.cwd(), 'src', 'app'),
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader'
-        })
-      },
+      { test: /\.css$/, loader: "raw-loader"},
       { test: /\.html$/,  loaders: ['raw-loader'] },
-      { test: /\.ts$/, loaders: ["awesome-typescript-loader", "angular2-template-loader"]}
+      { test: /\.ts$/, loaders: ["@ngtools/webpack"]}
     ]
   },
   plugins: [
+    new ngToolsWebpack.AotPlugin({
+      tsConfigPath: "./tsconfig.json"
+    }),
     new webpack.ProvidePlugin({
       Reflect: 'core-js/es7/reflect'
     }),
     new DefinePlugin({
-      "IndigoUiAssets": METADATA.appConfig.IndigoUiAssets,
-      "CatalogApiUrl": METADATA.appConfig.CatalogApiUrl,
-      "ProgramApiUrl": METADATA.appConfig.ProgramApiUrl,
-      "AuthServerUrl": METADATA.appConfig.AuthServerUrl,
-      "TemplateApiRoot": METADATA.appConfig.TemplateApiRoot,
-      'ENV': JSON.stringify(METADATA.ENV),
-      'process.env': {
-        'ENV': JSON.stringify(METADATA.ENV),
-        'NODE_ENV': JSON.stringify(METADATA.ENV)
-      }
+      "CatalogApiUrl": appConfig.CatalogApiUrl,
+      "ProgramApiUrl": appConfig.ProgramApiUrl,
+      "AuthServerUrl": appConfig.AuthServerUrl
     }),
     new webpack.ProgressPlugin(),
     new CopyWebpackPlugin([
@@ -89,10 +62,35 @@ var webpackConfig = {
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       path.join(process.cwd(), "./src")
-    )
+    ),
+    new UglifyJsPlugin({
+      beautify: false,
+      output: {
+        comments: false
+      },
+      mangle: {
+        screw_ie8: true
+      },
+      compress: {
+        screw_ie8: true,
+        warnings: false,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
+        negate_iife: false
+      }
+    }),
+    new LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    })
   ],
   stats: "errors-only",
-  devtool: "source-map",
   devServer: {
     contentBase: './src',
     port: 3000,
@@ -106,11 +104,5 @@ var webpackConfig = {
   }
 
 };
-if (isProduction){
-  webpackConfig.plugins.push(new ngToolsWebpack.AotPlugin({
-    tsConfigPath: "../tsconfig.json",
-    entryModule: "../src/app/app.module#AppModule"
-  }));
-}
 
 module.exports = webpackConfig;

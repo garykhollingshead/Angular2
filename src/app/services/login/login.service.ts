@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {BearerToken} from "../../types/index";
 import {Response, Http, RequestOptionsArgs, Headers, URLSearchParams} from "@angular/http";
-import {NotificationBarService, NotificationType} from "angular2-notification-bar";
 import {Observable} from "rxjs";
 import {Location} from "@angular/common";
 import {Router} from "@angular/router";
@@ -11,8 +10,7 @@ export class LoginService {
   private bearerToken: BearerToken = new BearerToken();
   private redirectTo: string;
 
-  constructor(private http: Http, private notificationService: NotificationBarService,
-              private location: Location, private router: Router) {
+  constructor(private http: Http, private location: Location, private router: Router) {
   }
 
   public logIn(): void {
@@ -67,10 +65,7 @@ export class LoginService {
         return bearerToken;
       })
       .catch(error => {
-        this.notificationService.create({
-          message: error || 'Server error',
-          type: NotificationType.Error
-        });
+        console.log(error || 'Server error');
         return Observable.throw(error || 'Server error');
       });
   }

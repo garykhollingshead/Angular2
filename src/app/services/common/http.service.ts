@@ -3,12 +3,10 @@ import {Http, Response, RequestOptionsArgs, Headers, RequestMethod} from "@angul
 import {Observable} from "rxjs/Rx";
 
 import {LoginService} from "../login/login.service";
-import {NotificationBarService, NotificationType} from "angular2-notification-bar";
 
 @Injectable()
 export class HttpService {
-  constructor(private http: Http, private notificationService: NotificationBarService,
-              private loginService: LoginService) { }
+  constructor(private http: Http, private loginService: LoginService) { }
 
   httpGetWithHeaders(url: string): Observable<any> {
     let options: RequestOptionsArgs = {headers: this.getAuthHeaders()};
@@ -72,10 +70,7 @@ export class HttpService {
 
   private rejectData(response: Response): Observable<any> {
     let error: string = response.json().message;
-    this.notificationService.create({
-      message: error || 'Server error',
-      type: NotificationType.Error
-    });
+    console.log(error || 'Server error');
     return Observable.throw(error || 'Server error');
   }
 }

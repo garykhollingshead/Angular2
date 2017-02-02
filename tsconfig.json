@@ -6,38 +6,19 @@
     "moduleResolution": "node",
     "declaration": true,
     "noImplicitAny": false,
-    "sourceMap": true,
-    "mapRoot": "",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "./build",
+    "outDir": "./dist",
     "rootDir": ".",
     "skipLibCheck": true,
     "typeRoots": [ "./node_modules/@types" ],
-    "types": [
-      "node"
-    ],
     "lib": [
       "dom",
       "es2015"
     ]
   },
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.ngfactory.ts",
-    "**/*.shim.ts",
-    "src/app/main*.ts",
-    "src/app/polyfill.ts"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  },
   "angularCompilerOptions": {
-    "genDir": ".",
-    "entryModule": "src/app/app.module#AppModule"
+    "genDir": "./src/ngfactory",
+    "entryModule": "src/app.module#AppModule"
   }
 }
