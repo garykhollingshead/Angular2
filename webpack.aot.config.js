@@ -64,6 +64,9 @@ var webpackConfig = {
     ]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      Reflect: 'core-js/es7/reflect'
+    }),
     new DefinePlugin({
       "IndigoUiAssets": METADATA.appConfig.IndigoUiAssets,
       "CatalogApiUrl": METADATA.appConfig.CatalogApiUrl,
