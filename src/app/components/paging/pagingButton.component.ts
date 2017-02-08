@@ -4,13 +4,13 @@ import {Component, Output, EventEmitter, Input} from "@angular/core";
   selector: "paging-buttons",
   template: `
 <div class="paging-container">
-  <button  (click)="buttonClicked('first')" [disabled]="!buttonConfig.showfirst" class="page-btn first">First
+  <button md-raised-button (click)="buttonClicked('first')" [disabled]="!buttonConfig.showfirst" class="page-btn first">First
   </button>
-  <button  (click)="buttonClicked('prev')" [disabled]="!buttonConfig.showprev" class="page-btn prev"><i class="material-icons">&#xE314;</i> <b>Prev</b>
+  <button md-raised-button (click)="buttonClicked('prev')" [disabled]="!buttonConfig.showprev" class="page-btn prev"><i class="material-icons">&#xE314;</i> <b>Prev</b>
   </button>
-  <button (click)="buttonClicked('next')" [disabled]="!buttonConfig.shownext" class="page-btn next"><b>Next</b> <i class="material-icons">&#xE315;</i>
+  <button md-raised-button (click)="buttonClicked('next')" [disabled]="!buttonConfig.shownext" class="page-btn next"><b>Next</b> <i class="material-icons">&#xE315;</i>
   </button>
-  <button (click)="buttonClicked('last')" [disabled]="!buttonConfig.showlast" class="page-btn last">Last
+  <button md-raised-button (click)="buttonClicked('last')" [disabled]="!buttonConfig.showlast" class="page-btn last">Last
   </button>
 </div>`
 })

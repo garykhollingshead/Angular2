@@ -6,19 +6,19 @@ import {LoginService} from "../../services/login/login.service";
   template: `
 <form #signinForm="ngForm" novalidate>
   <div layout="row" layout-align="center center">
-    <div>
-      <label>Login Name:</label>
-      <input type="text" name="clientId" [(ngModel)]="clientId" >
-    </div>
+    <md-input-container>
+      <label for="clientId">Login Name:</label>
+      <input md-input type="text" name="clientId" [(ngModel)]="clientId" >
+    </md-input-container>
   </div>
   <div layout="row" layout-align="center center">
-    <div>
-      <label>Password:</label>
-      <input type="password" name="clientSecret" [(ngModel)]="clientSecret" >
-    </div>
+    <md-input-container>
+      <label for="clientSecret">Password:</label>
+      <input md-input type="password" name="clientSecret" [(ngModel)]="clientSecret" >
+    </md-input-container>
   </div>
   <div layout="row" layout-align="center center">
-    <button (click)="login()" [disabled]="signinForm.invalid">Log In</button>
+    <button md-button (click)="login()" [disabled]="signinForm.invalid">Log In</button>
   </div>
 </form>
 `

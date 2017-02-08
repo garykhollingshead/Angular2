@@ -27,7 +27,7 @@ import {Headers} from "@angular/http";
         <h5>BRANDS</h5>
       </div>
       <div class="actionBtn-row">
-        <button class="primaryBtn" >Add New Brand</button>
+        <button md-raised-button class="primaryBtn" >Add New Brand</button>
       </div>
     </div>
     <div class="search-results">

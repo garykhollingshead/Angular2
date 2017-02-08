@@ -18,6 +18,7 @@ import {
   SignInComponent,
   PagingButtonsComponent,
   PagerComponent } from "./app/components/index";
+import {MaterialModule} from "@angular/material";
 
 const APP_PROVIDERS = [
   BrandApiService,
@@ -52,6 +53,7 @@ const ROUTES: Routes = [
   ],
   imports: [
     BrowserModule,
+    MaterialModule.forRoot(),
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules})
