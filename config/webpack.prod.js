@@ -11,9 +11,9 @@ const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
 const appConfig = {
   "IndigoUiAssets": JSON.stringify("http://localhost/testt/static/js"),
-  "CatalogApiUrl": JSON.stringify("http://localhost/catalogs/api"),
-  "ProgramApiUrl": JSON.stringify("http://localhost/programs/api"),
-  "AuthServerUrl": JSON.stringify("http://localhost/auth"),
+  "CatalogApiUrl": JSON.stringify("https://localhost/catalogs/api"),
+  "ProgramApiUrl": JSON.stringify("https://localhost/programs/api"),
+  "AuthServerUrl": JSON.stringify("https://localhost/auth"),
   "TemplateApiRoot": JSON.stringify("/EmailTemplateApi")
 };
 
